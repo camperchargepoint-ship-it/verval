@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Verónica Valero · Diseño y desarrollo web estratégico</title>
+<meta name="description" content="Diseño y desarrollo webs estratégicas para negocios, tiendas online y proyectos digitales que necesitan estructura, SEO y una presencia online preparada para crecer." />
+
+<style>
+:root {
+  --cream: #f5efe5;
+  --cream-2: #ebe1d2;
+  --paper: #fffaf2;
+  --ink: #111111;
+  --muted: #6b665e;
+  --olive: #6F7D45;
+  --olive-dark: #4e5a2f;
+  --olive-soft: #dfe7c9;
+  --white: #ffffff;
+  --line: rgba(17,17,17,.14);
+  --max: 1240px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: var(--cream);
+  line-height: 1.45;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .2;
+  background-image:
+    linear-gradient(rgba(17,17,17,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(17,17,17,.035) 1px, transparent 1px);
+  background-size: 54px 54px;
+  mask-image: linear-gradient(180deg, #000 0%, transparent 74%);
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+.container {
+  width: min(92%, var(--max));
+  margin: 0 auto;
+}
+
+/* NAV */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(245,239,229,.88);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(17,17,17,.08);
+}
+
+.nav {
+  min-height: 74px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 850;
+  letter-spacing: -.04em;
+}
+
+.brand img {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+}
+
+.nav-center {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  color: var(--muted);
+  font-size: .94rem;
+}
+
+.nav-center a:hover { color: var(--ink); }
+
+.nav-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.btn, .nav-link-btn {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 18px;
+  border-radius: 999px;
+  font-weight: 760;
+  transition: transform .22s ease, background .22s ease, border-color .22s ease, box-shadow .22s ease;
+}
+
+.btn::after, .nav-link-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 0%, rgba(255,255,255,.34) 42%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform .62s ease;
+  z-index: -1;
+}
+
+.btn:hover::after,
+.btn:active::after,
+.btn:focus-visible::after,
+.nav-link-btn:hover::after,
+.nav-link-btn:active::after,
+.nav-link-btn:focus-visible::after {
+  transform: translateX(120%);
+}
+
+.btn:hover,
+.btn:focus-visible,
+.nav-link-btn:hover,
+.nav-link-btn:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 38px rgba(17,17,17,.12);
+}
+
+.btn:active,
+.nav-link-btn:active {
+  transform: scale(.96);
+  box-shadow: 0 12px 26px rgba(17,17,17,.14);
+}
+
+.nav-link-btn, .btn-outline {
+  border: 1px solid var(--line);
+  background: transparent;
+}
+
+.btn-primary { background: var(--ink); color: var(--white); box-shadow: 0 14px 28px rgba(17,17,17,.12); }
+.btn-olive { background: var(--olive); color: var(--white); box-shadow: 0 14px 28px rgba(111,125,69,.20); }
+.btn-light { background: var(--white); color: var(--ink); box-shadow: 0 14px 28px rgba(17,17,17,.08); }
+
+/* HERO */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 58px 0 44px;
+}
+
+
+.hero-title {
+  position: relative;
+  z-index: 2;
+}
+
+
+.hero-label,
+.hero-row {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-shape {
+  position: absolute;
+  top: 2%;
+  right: 6%;
+   width: min(70vw, 1000px);
+  pointer-events: none;
+  z-index: 1;
+  opacity: .68;
+  transform: rotate(-6deg);
+}
+
+.hero-shape img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter:
+    drop-shadow(0 42px 86px rgba(78,90,47,.22))
+    drop-shadow(0 12px 28px rgba(17,17,17,.08))
+    saturate(.94)
+    contrast(.98);
+}
+
+.highlight {
+  display: inline;
+  color: var(--olive-dark);
+}
+
+
+.hero-label {
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  font-size: .82rem;
+  font-weight: 850;
+  color: var(--olive-dark);
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  position: relative;
+  isolation: isolate;
+  font-size: clamp(3.2rem, 7.2vw, 7.1rem);
+  line-height: 1;
+  letter-spacing: -.058em;
+  max-width: 980px;
+  margin-bottom: 40px;
+  padding: .04em 0 .16em;
+  color: var(--ink);
+  text-wrap: balance;
+  overflow: visible;
+  perspective: 900px;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 900;
+}
+
+.hero-title > span {
+  display: block;
+  line-height: 1.02;
+  padding: .04em 0;
+  color: #111;
+  opacity: 0;
+  transform: translateY(18px);
+  animation: titleWordIn .6s ease forwards;
+}
+
+.hero-title > span:nth-child(1) { animation-delay: .08s; }
+.hero-title > span:nth-child(2) { animation-delay: .18s; }
+.hero-title > span:nth-child(3) { animation-delay: .28s; }
+
+@keyframes titleWordIn {
+  0% {
+    opacity: 0;
+    transform: translateY(18px) scale(.975) rotateX(7deg);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(-2px) scale(1.006) rotateX(0deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotateX(0deg);
+  }
+}
+
+
+.hero-row {
+  display: block;
+  max-width: 900px;
+}
+
+.hero-copy {
+  position: relative;
+  max-width: 760px;
+  font-size: clamp(1.08rem, 1.55vw, 1.28rem);
+  color: var(--muted);
+  padding-left: 22px;
+}
+
+.hero-copy::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .25em;
+  bottom: .25em;
+  width: 4px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(111,125,69,.25), var(--olive), rgba(111,125,69,0));
+}
+
+.hero-copy strong { color: var(--ink); }
+
+.hero-copy strong {
+  background: linear-gradient(90deg, var(--ink), var(--olive-dark));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-label {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: flex-end;
+  margin-top: 46px;
+}
+
+.hero-showcase { padding: 46px 0 108px; }
+
+.showcase-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+  align-items: stretch;
+}
+
+
+.showcase-side {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.quick-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 30px;
+  padding: 30px;
+  background:
+    radial-gradient(circle at 82% 12%, rgba(111,125,69,.13), transparent 34%),
+    linear-gradient(145deg, rgba(255,250,242,.98), rgba(235,225,210,.76));
+  border: 1px solid rgba(17,17,17,.10);
+  min-height: 285px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow:
+    0 18px 45px rgba(17,17,17,.06),
+    inset 0 1px 0 rgba(255,255,255,.68);
+  transition: transform .24s ease, box-shadow .24s ease, background .24s ease;
+}
+
+.quick-card::before {
+  content: "";
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  border-radius: 999px;
+  right: -70px;
+  top: -70px;
+  background: radial-gradient(circle, rgba(111,125,69,.20), transparent 68%);
+  z-index: -1;
+}
+
+.quick-card::after {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,.42);
+  pointer-events: none;
+}
+
+
+.quick-card:hover {
+  transform: translateY(-5px);
+  background: #fff;
+  box-shadow:
+    0 28px 70px rgba(17,17,17,.10),
+    inset 0 1px 0 rgba(255,255,255,.78);
+}
+
+.quick-card:hover .quick-icon {
+  transform: translateY(-2px) rotate(-2deg);
+}
+
+.quick-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 35% 25%, rgba(255,255,255,.95), transparent 28%),
+    linear-gradient(145deg, rgba(223,231,201,.95), rgba(111,125,69,.20));
+  color: var(--olive-dark);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 26px;
+  box-shadow:
+    0 18px 32px rgba(111,125,69,.18),
+    inset 0 1px 0 rgba(255,255,255,.85);
+  transition: transform .24s ease;
+}
+
+.quick-icon svg {
+  width: 30px;
+  height: 30px;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.quick-card h3 {
+  max-width: 360px;
+  font-size: clamp(1.65rem, 2.15vw, 2.1rem);
+  line-height: .92;
+  letter-spacing: -.065em;
+}
+
+.quick-card p {
+  color: var(--muted);
+  margin-top: 10px;
+}
+
+/* EXPLORE */
+.explore {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.explore-inner {
+  min-height: 74px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  overflow-x: auto;
+}
+
+.explore-label { font-weight: 850; }
+
+.explore-links {
+  display: flex;
+  gap: 24px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.explore-links a:hover { color: var(--ink); }
+
+/* GLOBAL SECTIONS */
+.section { padding: 110px 0; }
+
+.section-head {
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  gap: 52px;
+  align-items: end;
+  margin-bottom: 58px;
+}
+
+.kicker {
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  font-size: .8rem;
+  font-weight: 900;
+  color: var(--olive-dark);
+}
+
+.section-title {
+  font-size: clamp(2.65rem, 6vw, 6.7rem);
+  line-height: .82;
+  letter-spacing: -.08em;
+  margin-bottom: 22px;
+}
+
+.section-text {
+  max-width: 730px;
+  font-size: 1.13rem;
+  color: var(--muted);
+}
+
+/* SERVICES */
+.services-layout {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 18px;
+}
+
+.service-card {
+  grid-column: span 4;
+  min-height: 360px;
+  padding: 28px;
+  border-radius: 30px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform .22s ease, background .22s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  background: #fff;
+}
+
+.service-card.wide { grid-column: span 6; }
+
+.service-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.service-num {
+  font-weight: 900;
+  color: var(--olive);
+}
+
+.service-pill {
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: var(--olive-soft);
+  color: var(--olive-dark);
+  font-size: .78rem;
+  font-weight: 850;
+}
+
+.service-card h3 {
+  font-size: clamp(1.8rem, 3vw, 3rem);
+  line-height: .9;
+  letter-spacing: -.06em;
+  margin-bottom: 16px;
+}
+
+.service-card p { color: var(--muted); }
+
+/* SMART */
+.smart {
+  background: var(--ink);
+  color: var(--white);
+  border-radius: 46px 46px 0 0;
+}
+
+.smart .kicker { color: var(--olive-soft); }
+.smart .section-text { color: rgba(255,255,255,.68); }
+
+.smart-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+.smart-feature {
+  min-height: 520px;
+  border-radius: 34px;
+  padding: 34px;
+  background:
+    radial-gradient(circle at 80% 18%, rgba(223,231,201,.24), transparent 30%),
+    linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.04));
+  border: 1px solid rgba(255,255,255,.12);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.smart-feature h3 {
+  max-width: 650px;
+  font-size: clamp(2.5rem, 5vw, 5.4rem);
+  line-height: .84;
+  letter-spacing: -.075em;
+}
+
+.smart-list {
+  display: grid;
+  gap: 16px;
+}
+
+.smart-item {
+  padding: 24px;
+  border-radius: 26px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.10);
+}
+
+.smart-item h3 {
+  font-size: 1.55rem;
+  margin-bottom: 8px;
+}
+
+.smart-item p { color: rgba(255,255,255,.68); }
+
+/* CREATIVE */
+.creative { background: var(--paper); }
+
+.creative-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.creative-card {
+  min-height: 320px;
+  padding: 26px;
+  border-radius: 28px;
+  border: 1px solid var(--line);
+  background: var(--cream);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform .22s ease;
+}
+
+.creative-card:hover { transform: translateY(-5px); }
+
+.creative-card:nth-child(2) {
+  background: var(--olive);
+  color: var(--white);
+}
+
+.creative-card:nth-child(4) {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.creative-card:nth-child(2) p,
+.creative-card:nth-child(4) p {
+  color: rgba(255,255,255,.72);
+}
+
+.creative-card h3 {
+  font-size: 1.7rem;
+  letter-spacing: -.055em;
+  margin-bottom: 12px;
+}
+
+.creative-card p { color: var(--muted); }
+
+/* SEO */
+.seo-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+.seo-card {
+  padding: 34px;
+  min-height: 410px;
+  border-radius: 34px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.seo-card.dark {
+  background: var(--olive-dark);
+  color: #fff;
+}
+
+.seo-card.dark p { color: rgba(255,255,255,.72); }
+
+.seo-card h3 {
+  font-size: clamp(2.2rem, 4vw, 4.6rem);
+  line-height: .84;
+  letter-spacing: -.075em;
+}
+
+.seo-card p {
+  color: var(--muted);
+  max-width: 590px;
+}
+
+/* ABOUT */
+.about {
+  background: var(--ink);
+  color: #fff;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.about-visual {
+  min-height: 560px;
+  border-radius: 36px;
+  background:
+    radial-gradient(circle at 50% 12%, rgba(255,255,255,.18), transparent 28rem),
+    linear-gradient(180deg, rgba(111,125,69,.52), rgba(255,255,255,.05)),
+    var(--olive-dark);
+  position: relative;
+  overflow: hidden;
+}
+
+.about-visual img {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  max-height: 575px;
+  width: auto;
+  filter: drop-shadow(0 26px 38px rgba(0,0,0,.25));
+}
+
+.about .kicker { color: var(--olive-soft); }
+.about .section-title { color: #fff; }
+
+.about p {
+  color: rgba(255,255,255,.72);
+  max-width: 680px;
+  margin-bottom: 16px;
+}
+
+.about-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 26px;
+}
+
+.about-tags span {
+  padding: 9px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.14);
+  color: rgba(255,255,255,.76);
+}
+
+/* CTA */
+.cta { background: var(--paper); }
+
+.cta-box {
+  position: relative;
+  padding: 58px;
+  border-radius: 40px;
+  background: var(--olive);
+  color: #fff;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.cta-box::after {
+  content: "";
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.18);
+  right: -130px;
+  bottom: -160px;
+  filter: blur(55px);
+}
+
+.cta-content, .cta-actions {
+  position: relative;
+  z-index: 2;
+}
+
+.cta h2 {
+  font-size: clamp(2.4rem, 5vw, 5.6rem);
+  line-height: .84;
+  letter-spacing: -.075em;
+}
+
+.cta p {
+  max-width: 650px;
+  margin-top: 22px;
+  color: rgba(255,255,255,.76);
+}
+
+.cta-actions {
+  justify-self: end;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* MOBILE FLOATING CTA */
+.mobile-cta {
+  display: none;
+}
+
+/* FOOTER */
+footer {
+  padding: 34px 0;
+  background: var(--paper);
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: .92rem;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* MICRO */
+.fade-up {
+  animation: fadeUp .75s ease both;
+}
+
+.delay-1 { animation-delay: .08s; }
+.delay-2 { animation-delay: .16s; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .fade-up { animation: none; }
+  .service-card, .creative-card, .btn, .quick-icon { transition: none; }
+  .hero-title > span {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 980px) {
+  .nav {
+    min-height: auto;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 14px;
+    padding: 18px 0;
+  }
+
+  .brand {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .brand img {
+    width: 78px;
+    height: 78px;
+  }
+
+  .brand span {
+    font-size: .95rem;
+  }
+
+  .nav-center {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    max-width: 100%;
+    font-size: .82rem;
+  }
+
+  .nav-center a {
+    padding: 4px 6px;
+    border-radius: 0;
+    background: transparent;
+    border: none;
+  }
+
+  .nav-actions {
+    display: none;
+  }
+
+  .hero-row,
+  .showcase-grid,
+  .section-head,
+  .smart-grid,
+  .seo-box,
+  .about-grid,
+  .cta-box {
+    grid-template-columns: 1fr;
+  }
+
+  .showcase-side {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-actions { justify-content: flex-start; }
+
+  .hero-copy {
+    max-width: 100%;
+  }
+
+  .services-layout,
+  .creative-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-card,
+  .service-card.wide {
+    grid-column: span 1;
+  }
+
+  .cta-actions { justify-self: start; }
+}
+
+@media (max-width: 680px) {
+  .topbar {
+    position: relative;
+  }
+
+  .nav {
+    gap: 12px;
+  }
+
+  .brand img {
+    width: 88px;
+    height: 88px;
+  }
+
+  .nav-center {
+    gap: 7px;
+  }
+
+  .nav-center a {
+    padding: 3px 5px;
+    font-size: .78rem;
+  }
+
+  .showcase-side {
+    gap: 14px;
+    grid-template-columns: 1fr;
+  }
+
+  .quick-card {
+    min-height: auto;
+    padding: 24px;
+  }
+
+  .quick-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 19px;
+    margin-bottom: 18px;
+  }
+
+  .quick-icon svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .quick-card h3 {
+    font-size: 1.38rem;
+  }
+
+  .hero { padding-top: 52px; }
+
+  .hero h1 {
+    font-size: clamp(2.6rem, 12.2vw, 4.15rem);
+    line-height: 1.04;
+    letter-spacing: -.052em;
+    margin-bottom: 28px;
+    padding-bottom: .16em;
+    max-width: 100%;
+    overflow: visible;
+  }
+
+  .hero-title > span {
+    line-height: 1.04;
+    padding-bottom: .12em;
+  }
+
+  .hero-shape {
+  width: 500px;
+  top: 5%;
+  right: -60px;
+  opacity: .34;
+  transform: rotate(-10deg);
+}
+
+  .hero-shape img {
+  filter:
+    drop-shadow(0 40px 80px rgba(78,90,47,.14))
+    drop-shadow(0 16px 30px rgba(17,17,17,.06))
+    saturate(.92)
+    contrast(.98);
+}
+
+  .hero-copy {
+    padding-left: 18px;
+    font-size: 1rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 34px;
+  }
+
+  .mobile-cta {
+    display: none;
+  }
+
+  .quick-card,
+  .smart-feature,
+  .seo-card,
+  .about-visual,
+  .cta-box {
+    border-radius: 26px;
+  }
+
+  .smart-feature,
+  .seo-card,
+  .cta-box {
+    padding: 28px;
+  }
+
+  .about-visual { min-height: 430px; }
+  .about-visual img { max-height: 455px; }
+
+  .section { padding: 82px 0; }
+
+  .explore-inner {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 18px 0;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="container nav">
+    <a class="brand" href="#">
+      <img src="logoVerValnuevo.svg" alt="Verónica Valero">
+      <span>Verónica Valero</span>
+    </a>
+
+    <nav class="nav-center" aria-label="Navegación principal">
+      <a href="#servicios">Servicios</a>
+      <a href="#enfoque">Enfoque</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#quien-soy">Quién soy</a>
+    </nav>
+
+    <div class="nav-actions">
+      <a class="nav-link-btn" href="mailto:info@veronicavalero.com">Email</a>
+      <a class="btn btn-primary" href="https://wa.me/34690794315">WhatsApp</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-label fade-up">Creación web estratégica</div>
+
+    <div class="hero-shape" aria-hidden="true">
+      <img src="3d.svg" alt="">
+    </div>
+
+    <h1 class="hero-title fade-up delay-1" aria-label="Diseño web que hace crecer tu negocio.">
+      <span>Diseño web</span>
+      <span>que hace <span class="highlight">crecer</span></span>
+      <span>tu negocio.</span>
+    </h1>
+
+    <div class="hero-row fade-up delay-2">
+      <p class="hero-copy">
+        Diseño y desarrollo páginas web para negocios, tiendas online y proyectos digitales que necesitan algo más que una web bonita: <strong>estructura, estrategia, SEO y claridad para crecer.</strong>
+      </p>
+
+      <div class="hero-actions">
+        <a href="mailto:info@veronicavalero.com" class="btn btn-primary">Pedir valoración</a>
+        <a href="#servicios" class="btn btn-outline">Explorar servicios</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero-showcase">
+  <div class="container showcase-grid">
+    <div class="showcase-side">
+      <article class="quick-card fade-up">
+        <span class="quick-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M4 18V8l8-4 8 4v10l-8 4-8-4Z"></path><path d="M12 4v18"></path><path d="M4 8l8 5 8-5"></path></svg>
+        </span>
+        <div>
+          <p class="kicker">Arquitectura digital</p>
+          <h3>Primero ordeno, luego diseño.</h3>
+          <p>Defino mensaje, estructura y recorrido para que la web tenga una función clara dentro del negocio.</p>
+        </div>
+      </article>
+
+      <article class="quick-card fade-up delay-1">
+        <span class="quick-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M5 6h14"></path><path d="M5 12h10"></path><path d="M5 18h7"></path></svg>
+        </span>
+        <div>
+          <p class="kicker">Estructura</p>
+          <h3>Una web fácil de entender.</h3>
+          <p>Organizo la información para que el usuario sepa dónde está, qué ofreces y cuál es el siguiente paso.</p>
+        </div>
+      </article>
+
+      <article class="quick-card fade-up delay-2">
+        <span class="quick-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5Z"></path></svg>
+        </span>
+        <div>
+          <p class="kicker">Diseño</p>
+          <h3>Estética con criterio.</h3>
+          <p>Diseño una presencia visual cuidada, elegante y coherente, sin perder claridad ni convertir la web en ruido.</p>
+        </div>
+      </article>
+
+      <article class="quick-card fade-up delay-2">
+        <span class="quick-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M4 19V5"></path><path d="M4 19h16"></path><path d="m7 15 4-4 3 3 5-7"></path></svg>
+        </span>
+        <div>
+          <p class="kicker">Crecimiento</p>
+          <h3>Preparada para avanzar.</h3>
+          <p>SEO, contenido y estructura pensados para que la web no se quede pequeña cuando el proyecto crezca.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section services" id="servicios">
+  <div class="container">
+    <div class="section-head">
+      <p class="kicker">Servicios</p>
+      <div>
+        <h2 class="section-title">Empieza con una web bien planteada.</h2>
+        <p class="section-text">
+          Cada proyecto se construye según su objetivo y su momento. No todas las webs necesitan lo mismo, pero todas necesitan estructura.
+        </p>
+      </div>
+    </div>
+
+    <div class="services-layout">
+      <article class="service-card">
+        <div class="service-top">
+          <span class="service-num">01</span>
+          <span class="service-pill">Presencia</span>
+        </div>
+        <div>
+          <h3>Webs corporativas</h3>
+          <p>Webs claras, profesionales y bien estructuradas para representar tu negocio y posicionar desde el inicio.</p>
+        </div>
+      </article>
+
+      <article class="service-card">
+        <div class="service-top">
+          <span class="service-num">02</span>
+          <span class="service-pill">Venta</span>
+        </div>
+        <div>
+          <h3>Webs y tiendas online</h3>
+          <p>Proyectos pensados para crecer: estructura SEO, navegación clara, experiencia de compra y enfoque en conversión.</p>
+        </div>
+      </article>
+
+      <article class="service-card">
+        <div class="service-top">
+          <span class="service-num">03</span>
+          <span class="service-pill">A medida</span>
+        </div>
+        <div>
+          <h3>Proyectos digitales</h3>
+          <p>Cuando la web es parte clave del negocio y necesita una solución adaptada, con foco en rendimiento, UX/UI y objetivos reales.</p>
+        </div>
+      </article>
+
+      <article class="service-card wide">
+        <div class="service-top">
+          <span class="service-num">04</span>
+          <span class="service-pill">Dirección</span>
+        </div>
+        <div>
+          <h3>Estrategia y gestión</h3>
+          <p>Antes de construir, hay que pensar. Defino estructura, objetivos, prioridades y recorrido para que la web tenga sentido dentro del negocio.</p>
+        </div>
+      </article>
+
+      <article class="service-card wide">
+        <div class="service-top">
+          <span class="service-num">05</span>
+          <span class="service-pill">Continuidad</span>
+        </div>
+        <div>
+          <h3>Mantenimiento web</h3>
+          <p>Actualizaciones, seguridad, revisión técnica y optimización para que la web siga funcionando bien a lo largo del tiempo.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section smart" id="enfoque">
+  <div class="container">
+    <div class="section-head">
+      <p class="kicker">Enfoque</p>
+      <div>
+        <h2 class="section-title">Diseño inteligente, pero aplicado a tu negocio.</h2>
+        <p class="section-text">
+          No se trata de poner bloques bonitos. Se trata de decidir qué debe ver, entender y hacer una persona cuando entra en tu web.
+        </p>
+      </div>
+    </div>
+
+    <div class="smart-grid">
+      <article class="smart-feature">
+        <h3>Tu web como sistema, no como escaparate.</h3>
+        <p>Mensaje, estructura, experiencia de usuario y SEO trabajan juntos para que tu presencia digital tenga dirección.</p>
+      </article>
+
+      <div class="smart-list">
+        <article class="smart-item">
+          <h3>Hecho a medida</h3>
+          <p>Transformo la información de tu negocio en una estructura clara, visual y fácil de entender.</p>
+        </article>
+        <article class="smart-item">
+          <h3>Recorrido intuitivo</h3>
+          <p>La web guía al usuario sin saturarlo y facilita el siguiente paso.</p>
+        </article>
+        <article class="smart-item">
+          <h3>Contenido con intención</h3>
+          <p>No escribimos por rellenar. Cada texto tiene una función: explicar, ordenar, vender o generar confianza.</p>
+        </article>
+        <article class="smart-item">
+          <h3>Base preparada para crecer</h3>
+          <p>Una estructura que pueda evolucionar sin tener que rehacerlo todo cada seis meses.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section creative" id="proyectos">
+  <div class="container">
+    <div class="section-head">
+      <p class="kicker">Proyectos</p>
+      <div>
+        <h2 class="section-title">Trabajos que muestran estrategia, estructura y diseño.</h2>
+        <p class="section-text">
+          Una selección de proyectos para ver cómo aplico arquitectura digital, diseño web, SEO y claridad visual en casos reales.
+        </p>
+      </div>
+    </div>
+
+    <div class="creative-grid">
+      <article class="creative-card">
+        <span class="service-num">01</span>
+        <div>
+          <h3>UX/UI con intención</h3>
+          <p>Diseño visual orientado a claridad, confianza y acción.</p>
+        </div>
+      </article>
+
+      <article class="creative-card">
+        <span class="service-num">02</span>
+        <div>
+          <h3>Movimiento sutil</h3>
+          <p>Microefectos que acompañan la navegación sin convertir la web en un circo.</p>
+        </div>
+      </article>
+
+      <article class="creative-card">
+        <span class="service-num">03</span>
+        <div>
+          <h3>Contenido multimedia</h3>
+          <p>Imágenes, mockups y recursos visuales colocados con criterio.</p>
+        </div>
+      </article>
+
+      <article class="creative-card">
+        <span class="service-num">04</span>
+        <div>
+          <h3>Responsive real</h3>
+          <p>Una web pensada para verse bien y funcionar bien en todos los dispositivos.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section seo" id="seo">
+  <div class="container">
+    <div class="section-head">
+      <p class="kicker">SEO y estructura</p>
+      <div>
+        <h2 class="section-title">Diseño web con base para posicionar.</h2>
+        <p class="section-text">
+          Una web no debería depender solo de redes sociales o recomendaciones. La estructura debe ayudar a que Google entienda qué haces y a que el usuario encuentre lo que busca.
+        </p>
+      </div>
+    </div>
+
+    <div class="seo-box">
+      <article class="seo-card">
+        <h3>Arquitectura pensada para Google y para personas.</h3>
+        <p>Organización de páginas, encabezados, textos, jerarquía y contenido para que la web no sea solo bonita, sino comprensible.</p>
+      </article>
+
+      <article class="seo-card dark">
+        <h3>Datos, claridad y decisiones.</h3>
+        <p>Una base preparada para medir, optimizar y tomar decisiones sin ir a ciegas.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section about" id="quien-soy">
+  <div class="container about-grid">
+    <div class="about-visual">
+      <img src="imagen_veronica.webp" alt="Verónica Valero">
+    </div>
+
+    <div>
+      <p class="kicker">Quién soy</p>
+      <h2 class="section-title">Diseño webs desde la estrategia, no desde la plantilla.</h2>
+      <p>
+        Trabajo el diseño web desde un enfoque práctico: estructura, claridad y estrategia antes que estética.
+      </p>
+      <p>
+        No se trata de hacer webs, sino de construir herramientas que tengan sentido dentro del negocio y puedan crecer con él.
+      </p>
+      <p>
+        Mi trabajo está entre la visión estratégica, la arquitectura de contenido, el diseño UX/UI y el desarrollo web.
+      </p>
+
+      <div class="about-tags">
+        <span>Estructura antes que decoración</span>
+        <span>SEO desde la base</span>
+        <span>Diseño con intención</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section cta" id="contacto">
+  <div class="container cta-box">
+    <div class="cta-content">
+      <h2>Si quieres una web bien planteada desde el inicio, podemos ver tu caso.</h2>
+      <p>
+        Escríbeme por email o WhatsApp y revisamos en qué punto estás, qué necesita realmente tu negocio y si tiene sentido trabajar juntas.
+      </p>
+    </div>
+
+    <div class="cta-actions">
+      <a href="mailto:info@veronicavalero.com" class="btn btn-light">Enviar email</a>
+      <a href="https://wa.me/34690794315" class="btn btn-primary">Escribir por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div class="mobile-cta" aria-label="Contacto rápido">
+  <a href="mailto:info@veronicavalero.com" class="btn btn-primary">Pedir valoración</a>
+  <a href="https://wa.me/34690794315" class="btn btn-olive">WhatsApp</a>
+</div>
+
+<footer>
+  <div class="container footer-inner">
+    <span>© Verónica Valero</span>
+    <span>Diseño web · Desarrollo · Estrategia digital · SEO</span>
+  </div>
+</footer>
+
+</body>
+</html>
