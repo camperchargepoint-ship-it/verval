@@ -345,28 +345,34 @@ img { max-width: 100%; display: block; }
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: 1.08fr .92fr;
-  gap: 72px;
+  grid-template-columns: 1fr .88fr;
+  gap: 68px;
   align-items: end;
-  margin-bottom: 68px;
+  max-width: 1240px;
+  margin: 0 auto 78px;
 }
 
 .value-head h2 {
-color: var(--cream);
-  max-width: 980px;
+  color: var(--cream);
+  max-width: 820px;
   font-size: clamp(3rem, 5.2vw, 6.1rem);
   line-height: .86;
   letter-spacing: -.078em;
-  margin-top: 26px;
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
 }
 
+.value-head h2 span {
+  display: block;
+}
+
+.value-head > div:first-child {
+  transform: translateX(-34px);
+}
 .value-head > p {
-  max-width: 600px;
+  max-width: 560px;
   justify-self: end;
-  color: rgba(255,255,255,.82);
-  font-size: clamp(1.04rem, 1.28vw, 1.16rem);
-  line-height: 1.5;
-  margin-bottom: 10px;
 }
 
 .showcase-grid {
@@ -960,6 +966,10 @@ footer {
     justify-self: start;
   }
 
+  .value-head > div:first-child {
+    transform: none;
+  }
+
   .showcase-side {
     grid-template-columns: 1fr;
   }
@@ -998,13 +1008,24 @@ footer {
   }
 
   .nav {
-    gap: 12px;
-  }
+  gap: 10px;
+  padding: 12px 0;
+}
 
-  .brand img {
-    width: 88px;
-    height: 88px;
-  }
+  .brand {
+  flex-direction: row;
+  gap: 10px;
+  text-align: left;
+}
+
+.brand img {
+  width: 46px;
+  height: 46px;
+}
+
+.brand span {
+  font-size: .92rem;
+}
 
   .nav-center {
     gap: 7px;
@@ -1242,7 +1263,11 @@ footer {
     <div class="value-head fade-up">
       <div>
         <p class="kicker">Valor diferencial</p>
-        <h2>Lo que marca la diferencia en una web.</h2>
+        <h2>
+  <span>Lo que marca</span>
+  <span>la diferencia</span>
+  <span>en una web.</span>
+</h2>
       </div>
       <p>Una web que funciona no depende solo de verse bien. Necesita estructura, claridad, intención y una base preparada para crecer.</p>
     </div>
