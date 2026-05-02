@@ -1197,12 +1197,12 @@ img { max-width: 100%; display: block; }
   padding: 26px;
   border-radius: 28px;
   background:
-    radial-gradient(circle at 88% 14%, rgba(223,231,201,.30), transparent 34%),
-    rgba(255,250,242,.82);
-  border: 1px solid rgba(17,17,17,.12);
+    radial-gradient(circle at 88% 14%, rgba(111,125,69,.30), transparent 34%),
+    #111111;
+  border: 1px solid rgba(255,255,255,.10);
   box-shadow:
-    0 30px 82px rgba(17,17,17,.10),
-    inset 0 1px 0 rgba(255,255,255,.78);
+    0 30px 82px rgba(17,17,17,.16),
+    inset 0 1px 0 rgba(255,255,255,.08);
   display: grid;
   gap: 12px;
   backdrop-filter: blur(16px);
@@ -1216,20 +1216,33 @@ img { max-width: 100%; display: block; }
   line-height: .95;
   letter-spacing: -.055em;
   font-weight: 900;
-  color: var(--ink);
+  color: var(--cream);
 }
 
 .cta-actions::after {
   content: "Respuesta rápida y sin compromiso.";
   display: block;
   margin-top: 4px;
-  color: var(--muted);
+  color: rgba(255,250,242,.68);
   font-size: .92rem;
   text-align: center;
 }
 
 .cta-actions .btn {
   min-height: 48px;
+}
+
+.cta-actions .btn-light {
+  background: var(--cream);
+  color: var(--ink);
+  border-color: transparent;
+}
+
+.cta-actions .btn-primary {
+  background: var(--olive);
+  color: var(--white);
+  border-color: transparent;
+  box-shadow: 0 14px 28px rgba(111,125,69,.22);
 }
 
 /* MOBILE FLOATING CTA */
@@ -2251,7 +2264,7 @@ footer {
     </div>
 
     <div class="cta-actions">
-      <a href="mailto:info@veronicavalero.com" class="btn btn-light">Enviar email</a>
+      <a href="mailto:info@veronicavalero.com" class="btn btn-light">Pedir valoración</a>
       <a href="https://wa.me/34690794315" class="btn btn-primary">Escribir por WhatsApp</a>
     </div>
   </div>
