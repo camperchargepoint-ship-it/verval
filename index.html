@@ -855,6 +855,23 @@ img { max-width: 100%; display: block; }
   margin-bottom: 0;
 }
 
+.smart .section-title {
+  color: var(--cream);
+}
+
+.smart .section-heading .section-title.enfoque-title {
+  max-width: none;
+  width: max-content;
+  font-size: clamp(3.25rem, 5.25vw, 6.2rem);
+  line-height: .86;
+  letter-spacing: -.082em;
+}
+
+.enfoque-title span {
+  display: block;
+  white-space: nowrap;
+}
+
 .smart .section-copy {
   max-width: 560px;
   justify-self: end;
@@ -1160,8 +1177,8 @@ img { max-width: 100%; display: block; }
     z-index: 2;
     min-width: 250px;
     max-width: 330px;
-    padding: 16px 20px 16px 16px;
-    border-radius: 999px;
+    padding: 14px 18px;
+    border-radius: 22px;
     background: rgba(255,250,242,.86);
     border: 1px solid rgba(17,17,17,.10);
     backdrop-filter: blur(18px);
@@ -1210,25 +1227,25 @@ img { max-width: 100%; display: block; }
   }
 
   .node-mark {
-  width: 62px;
-  height: 62px;
-  flex: 0 0 62px;
-  border-radius: 50%;
-  background: rgba(255,255,255,.92);
-  color: var(--olive-dark);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow:
-    0 12px 24px rgba(111,125,69,.16),
-    inset 0 1px 0 rgba(255,255,255,.82);
-  overflow: hidden;
-}
+    width: 120px;
+    height: 60px;
+    flex: 0 0 auto;
+    border-radius: 12px;
+    background: rgba(255,255,255,.96);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow:
+      0 10px 22px rgba(111,125,69,.14),
+      inset 0 1px 0 rgba(255,255,255,.82);
+    overflow: hidden;
+    padding: 6px 10px;
+  }
   .node-mark img {
-  width: 76%;
-  height: 76%;
-  object-fit: contain;
-}
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
 
   .project-node.is-dark {
     background: rgba(17,17,17,.92);
@@ -1262,6 +1279,7 @@ img { max-width: 100%; display: block; }
     display: grid;
     gap: 1px;
     min-width: 0;
+    gap: 4px;
   }
 
   .node-title {
@@ -1727,7 +1745,7 @@ img { max-width: 100%; display: block; }
 }
 
 .cta-actions::before {
-  content: "¿Lo vemos?";
+  content: "¿Encaja contigo?";
   display: block;
   margin-bottom: 10px;
   font-size: 1.2rem;
@@ -1823,22 +1841,107 @@ footer {
 }
 
 /* MICRO */
-.fade-up {
-  animation: fadeUp .75s ease both;
+.fade-up,
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  animation: revealIn .78s cubic-bezier(.22, 1, .36, 1) both;
 }
 
 .delay-1 { animation-delay: .08s; }
 .delay-2 { animation-delay: .16s; }
+.delay-3 { animation-delay: .24s; }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(18px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes revealIn {
+  from {
+    opacity: 0;
+    transform: translateY(22px) scale(.985);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  .section,
+  .quick-card,
+  .service-card,
+  .enfoque-item,
+  .concept-card,
+  .project-card,
+  .about-content > p,
+  .about-signature,
+  .about-tags,
+  .cta-content,
+  .cta-actions {
+    opacity: 0;
+    transform: translateY(26px) scale(.985);
+    filter: blur(8px);
+    animation: scrollReveal .9s cubic-bezier(.22, 1, .36, 1) both;
+    animation-timeline: view();
+    animation-range: entry 8% cover 30%;
+    will-change: opacity, transform, filter;
+  }
+
+  .quick-card:nth-child(2),
+  .service-card:nth-child(2),
+  .concept-card:nth-child(2),
+  .project-card:nth-child(2),
+  .enfoque-item:nth-child(2) {
+    animation-range: entry 10% cover 32%;
+  }
+
+  .quick-card:nth-child(3),
+  .service-card:nth-child(3),
+  .concept-card:nth-child(3),
+  .project-card:nth-child(3),
+  .enfoque-item:nth-child(3) {
+    animation-range: entry 12% cover 34%;
+  }
+
+  .quick-card:nth-child(4),
+  .service-card:nth-child(4),
+  .project-card:nth-child(4),
+  .enfoque-item:nth-child(4) {
+    animation-range: entry 14% cover 36%;
+  }
+
+  .service-card:nth-child(5),
+  .project-card:nth-child(5) {
+    animation-range: entry 16% cover 38%;
+  }
+
+  .project-card:nth-child(6) {
+    animation-range: entry 18% cover 40%;
+  }
+}
+
+@keyframes scrollReveal {
+  from {
+    opacity: 0;
+    transform: translateY(26px) scale(.985);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.is-visible {
+  opacity: 1 !important;
+  transform: translateY(0) scale(1) !important;
+  filter: blur(0) !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .fade-up { animation: none; }
-  .service-card, .project-node, .btn, .quick-icon { transition: none; }
+  .fade-up, .reveal, .section, .quick-card, .service-card, .enfoque-item, .concept-card, .project-card, .about-content > p, .about-signature, .about-tags, .cta-content, .cta-actions { opacity: 1; transform: none; filter: none; animation: none; }
+  .service-card, .project-node, .btn, .quick-icon, .quick-card, .enfoque-content, .concept-card, .project-card { transition: none; }
   .project-node, .constellation-lines path, .service-motion::before, .service-motion::after, .service-card > div::before { animation: none; opacity: 1; }
   .hero-title > span {
     opacity: 1;
@@ -2030,6 +2133,13 @@ footer {
   .smart .section-head {
     grid-template-columns: 1fr;
     gap: 24px;
+  }
+
+  .smart .section-heading .section-title.enfoque-title {
+    width: 100%;
+    font-size: clamp(3rem, 9.5vw, 5rem);
+    line-height: .88;
+    letter-spacing: -.078em;
   }
 
   .smart .section-copy {
@@ -2360,6 +2470,13 @@ footer {
     padding: 28px;
   }
 
+
+  .smart .section-heading .section-title.enfoque-title {
+    width: 100%;
+    font-size: clamp(2.55rem, 10.7vw, 3.75rem);
+    line-height: .88;
+    letter-spacing: -.076em;
+  }
   .enfoque-timeline {
     margin-top: 42px;
   }
@@ -2628,7 +2745,7 @@ footer {
 
 <section class="hero">
   <div class="container">
-    <div class="hero-label fade-up">Creación web estratégica</div>
+    <div class="hero-label fade-up">Estrategia digital y web</div>
 
     <div class="hero-shape" aria-hidden="true">
       <img src="imagen-hero-3d.svg" alt="">
@@ -2642,7 +2759,8 @@ footer {
 
     <div class="hero-row fade-up delay-2">
       <p class="hero-copy">
-        Diseño y desarrollo páginas web para negocios, tiendas online y proyectos digitales que necesitan algo más que una web bonita: <strong>estructura, estrategia, SEO y claridad para crecer.</strong>
+        Más que una web bonita.<br>
+        Una base bien planteada que atrae, se entiende y funciona dentro de tu negocio.
       </p>
 
       <div class="hero-actions">
@@ -2659,12 +2777,12 @@ footer {
       <div>
         <p class="kicker">Valor diferencial</p>
         <h2>
-  <span>Lo que marca</span>
-  <span>la diferencia</span>
-  <span>en una web.</span>
+  <span>Lo que hace</span>
+  <span>que un negocio</span>
+  <span>digital funcione.</span>
 </h2>
       </div>
-      <p>Una web que funciona no depende solo de verse bien. Necesita estructura, claridad, intención y una base preparada para crecer.</p>
+      <p>Un negocio digital no funciona por partes sueltas. Funciona cuando todo tiene sentido, está bien planteado y conecta.</p>
     </div>
     <div class="showcase-side">
       <article class="quick-card fade-up">
@@ -2673,8 +2791,8 @@ footer {
         </span>
         <div>
           <p class="kicker">Arquitectura digital</p>
-          <h3>Primero el sentido, luego el diseño.</h3>
-          <p>Una web funciona cuando el mensaje, la estructura y el recorrido tienen una lógica clara dentro del negocio.</p>
+          <h3>Sin estructura, nada funciona.</h3>
+          <p>La base define qué se comunica, en qué orden y con qué intención. Sin eso, todo lo demás falla.</p>
         </div>
       </article>
 
@@ -2684,8 +2802,8 @@ footer {
         </span>
         <div>
           <p class="kicker">Estructura</p>
-          <h3>Todo claro desde el primer vistazo.</h3>
-          <p>La información se organiza para que quien entra entienda rápido qué se ofrece, por qué confiar y cuál es el siguiente paso.</p>
+          <h3>Entender en segundos o perder la oportunidad.</h3>
+          <p>Si quien entra no entiende rápido qué haces y qué tiene que hacer, se va. La claridad no es opcional.</p>
         </div>
       </article>
 
@@ -2695,8 +2813,8 @@ footer {
         </span>
         <div>
           <p class="kicker">Diseño</p>
-          <h3>Una estética con intención.</h3>
-          <p>El diseño acompaña al contenido, refuerza el mensaje y facilita la comprensión sin convertirse en ruido.</p>
+          <h3>El diseño no es decoración.</h3>
+          <p>Guía, explica y refuerza el mensaje. Si solo queda bonito, no está cumpliendo su función.</p>
         </div>
       </article>
 
@@ -2706,8 +2824,8 @@ footer {
         </span>
         <div>
           <p class="kicker">Crecimiento</p>
-          <h3>Base preparada para crecer.</h3>
-          <p>SEO, contenido y estructura pensados desde el inicio para que la web pueda evolucionar sin rehacerlo todo.</p>
+          <h3>Si no crece, se queda corta.</h3>
+          <p>Se plantea desde el inicio para posicionar, evolucionar y mejorar sin tener que rehacerlo todo.</p>
         </div>
       </article>
     </div>
@@ -2718,47 +2836,47 @@ footer {
   <div class="container">
     <div class="section-head">
       <p class="section-text section-copy">
-        Cada proyecto se construye según su objetivo y su momento. No todas las webs necesitan lo mismo, pero todas necesitan estructura.
+        Trabajo cada proyecto como una pieza dentro del negocio digital: web, visibilidad, procesos y continuidad. No se trata de hacer cosas sueltas, sino de construir una base que funcione.
       </p>
       <div class="section-heading">
         <p class="kicker">Servicios</p>
-        <h2 class="section-title">Empieza con<br>una web bien<br>planteada.</h2>
+        <h2 class="section-title">Servicios para<br>un negocio digital<br>bien planteado.</h2>
       </div>
     </div>
 
     <div class="services-layout">
       <article class="service-card">
         <div>
-          <h3>Web corporativa</h3>
-          <p>Webs claras, profesionales y bien estructuradas para representar tu negocio y posicionar desde el inicio.</p>
+          <h3>Web y e-commerce</h3>
+          <p>Diseño y desarrollo de webs, tiendas online y proyectos digitales con estructura clara, experiencia cuidada y enfoque a negocio.</p>
         </div>
       </article>
 
       <article class="service-card">
         <div>
-          <h3>Tiendas online</h3>
-          <p>Proyectos pensados para crecer: estructura SEO, navegación clara, experiencia de compra y enfoque en conversión.</p>
+          <h3>Posicionamiento</h3>
+          <p>SEO, contenido y Google Ads para mejorar la visibilidad, atraer tráfico cualificado y hacer que tu negocio aparezca donde tiene que aparecer.</p>
         </div>
       </article>
 
       <article class="service-card">
         <div>
-          <h3>SEO</h3>
-          <p>Estructura, contenido y optimización para que la web tenga una base clara, rastreable y preparada para posicionar.</p>
+          <h3>Automatización</h3>
+          <p>Procesos, formularios, respuestas y flujos que ayudan a ahorrar tiempo, ordenar tareas y facilitar el día a día del negocio.</p>
         </div>
       </article>
 
       <article class="service-card wide">
         <div>
           <h3>Estrategia y gestión</h3>
-          <p>Antes de construir, hay que pensar. Defino estructura, objetivos, prioridades y recorrido para que la web tenga sentido dentro del negocio.</p>
+          <p>Definición de objetivos, estructura, prioridades y recorrido del proyecto para que cada decisión tenga sentido y avance con dirección.</p>
         </div>
       </article>
 
       <article class="service-card wide">
         <div>
-          <h3>Mantenimiento web</h3>
-          <p>Actualizaciones, seguridad, revisión técnica y optimización para que la web siga funcionando bien a lo largo del tiempo.</p>
+          <h3>Mantenimiento</h3>
+          <p>Soporte, mejoras, actualizaciones y revisión de webs, e-commerce y sistemas para que todo siga funcionando, centralizado y al día.</p>
         </div>
       </article>
     </div>
@@ -2781,10 +2899,14 @@ footer {
     <div class="section-head">
       <div class="section-heading">
         <p class="kicker">Enfoque</p>
-        <h2 class="section-title">Cómo planteo<br>una web que<br>funciona.</h2>
+        <h2 class="section-title enfoque-title">
+  <span>Cómo planteo un</span>
+  <span>proyecto digital</span>
+  <span>que funciona.</span>
+</h2>
       </div>
       <p class="section-text section-copy">
-        Aquí no va de añadir bloques porque sí. Va de entender el negocio, ordenar el mensaje y construir una web con criterio antes de entrar en diseño.
+        No empiezo por el diseño ni por la herramienta. Empiezo por entender el negocio, ordenar las ideas y definir qué necesita funcionar para que todo tenga sentido.
       </p>
     </div>
 
@@ -2792,8 +2914,8 @@ footer {
       <article class="enfoque-item">
         <span class="enfoque-step">01</span>
         <div class="enfoque-content">
-          <h3>Entender antes de diseñar.</h3>
-          <p>Primero miro qué vendes, a quién te diriges, qué necesita entender esa persona y qué papel debe cumplir la web dentro del negocio. Sin esa base, el diseño solo maquilla.</p>
+          <h3>Entender antes de construir.</h3>
+          <p>Primero miro qué vendes, a quién te diriges, qué necesita entender esa persona y qué papel debe cumplir cada pieza dentro del negocio digital.</p>
         </div>
       </article>
 
@@ -2801,7 +2923,7 @@ footer {
         <span class="enfoque-step">02</span>
         <div class="enfoque-content">
           <h3>Convertir el caos en estructura.</h3>
-          <p>Servicios, ideas, textos, prioridades y mensajes se ordenan en una arquitectura clara. La web tiene que ayudar a entender rápido dónde está el valor y cuál es el siguiente paso.</p>
+          <p>Servicios, ideas, textos, prioridades y procesos se ordenan en una estructura clara. La persona que llega tiene que entender rápido dónde está el valor y cuál es el siguiente paso.</p>
         </div>
       </article>
 
@@ -2809,7 +2931,7 @@ footer {
         <span class="enfoque-step">03</span>
         <div class="enfoque-content">
           <h3>Diseñar con intención.</h3>
-          <p>La parte visual no va después como decoración. Cada bloque, jerarquía, espacio y llamada a la acción se diseña para guiar, explicar, reforzar confianza o facilitar una decisión.</p>
+          <p>La parte visual no va como decoración. Cada bloque, jerarquía, espacio y llamada a la acción tiene que guiar, explicar, reforzar confianza o facilitar una decisión.</p>
         </div>
       </article>
 
@@ -2817,14 +2939,14 @@ footer {
         <span class="enfoque-step">04</span>
         <div class="enfoque-content">
           <h3>Dejar base para evolucionar.</h3>
-          <p>Una web no debería quedarse pequeña al poco tiempo. Por eso se plantea con estructura, contenido y base SEO para poder crecer, medir y mejorar sin rehacerlo todo desde cero.</p>
+          <p>Un negocio digital cambia. Por eso la base se plantea para poder crecer, posicionar, automatizar, medir y mejorar sin tener que rehacerlo todo desde cero.</p>
         </div>
       </article>
     </div>
 
     <div class="enfoque-note fade-up">
       <strong>Menos improvisación. Más dirección.</strong>
-      <p>El objetivo no es tener una web llena de cosas. Es tener una web clara, coherente y preparada para acompañar el crecimiento real del proyecto.</p>
+      <p>El objetivo no es acumular herramientas, páginas o acciones sueltas. Es construir una base clara, coherente y preparada para acompañar el crecimiento real del negocio.</p>
     </div>
   </div>
 </section>
@@ -2849,8 +2971,8 @@ footer {
       <div class="concept-grid">
         <article class="concept-card">
           <div class="concept-icon">
-            <img src="https://www.google.com/s2/favicons?domain=amazon.com&sz=64" alt="">
-          </div>
+  <img src="logo-fondo.png" alt="La Despensa">
+</div>
           <span class="concept-label">Ecommerce</span>
           <h4>La Despensa Viva</h4>
           <p><strong>Reto</strong> Presentar productos premium sin que la tienda parezca fría o genérica.</p>
@@ -2860,7 +2982,7 @@ footer {
 
         <article class="concept-card">
           <div class="concept-icon">
-            <img src="https://www.google.com/s2/favicons?domain=zapier.com&sz=64" alt="">
+            <img src="logo-fondo.png" alt="Zapier">
           </div>
           <span class="concept-label">Automatización</span>
           <h4>Reserva Flow</h4>
@@ -2945,24 +3067,27 @@ footer {
   digital.
 </h2>
       <p>
-        Trabajo proyectos web desde una visión global: <strong>estructura, contenido, diseño, SEO y experiencia de usuario</strong>. Antes de diseñar una pantalla, ordeno qué necesita comunicar el negocio y cómo debe entenderlo quien llega a la web.
+        Trabajo proyectos digitales desde una visión global: <strong>estructura, contenido, diseño, posicionamiento y experiencia de usuario</strong>. Antes de diseñar nada, ordeno qué necesita comunicar el negocio y cómo debe entenderlo quien llega.
       </p>
       <p>
-        Me gusta construir webs con intención: claras, bien planteadas y preparadas para crecer. No busco llenar una página de efectos, sino crear una presencia digital que tenga sentido, transmita confianza y ayude a tomar decisiones.
+        No se trata solo de una web. Se trata de construir una base clara, coherente y preparada para funcionar dentro del negocio.
       </p>
       <p>
-        Mi trabajo se mueve entre la estrategia, la arquitectura de contenido, el diseño visual y el desarrollo web. Esa mezcla es la que me permite ver cada proyecto como un sistema, no como una plantilla bonita.
+        Me enfoco en crear sistemas digitales con intención: bien planteados, fáciles de entender y pensados para convertir. Cada decisión tiene un porqué: guiar, explicar, generar confianza o facilitar una acción.
+      </p>
+      <p>
+        Mi trabajo se mueve entre la estrategia, la arquitectura de contenido, el diseño y el desarrollo. Esa combinación es la que me permite ver cada proyecto como un conjunto que tiene que funcionar, no como piezas sueltas.
       </p>
 
       <div class="about-signature">
         <strong>Verónica Valero</strong>
-        <span>Diseño web · estrategia digital · SEO · arquitectura visual</span>
+        <span>Estrategia digital · Diseño web · SEO · automatización</span>
       </div>
 
       <div class="about-tags">
-        <span>Arquitectura</span>
-        <span>Diseño</span>
-        <span>SEO</span>
+        <span>Estrategia</span>
+        <span>Estructura</span>
+        <span>Crecimiento</span>
       </div>
     </div>
 
@@ -2976,9 +3101,9 @@ footer {
   <div class="container cta-box">
     <div class="cta-content">
   <p class="kicker">Contacto</p>
-  <h2>Si tu web no está a la altura de tu negocio, es momento de replantearla.</h2>
+  <h2>No necesitas otra web.<br>Necesitas que todo tenga sentido.</h2>
       <p>
-        Escríbeme por email o WhatsApp y revisamos en qué punto estás, qué necesita realmente tu negocio y si tiene sentido trabajar juntas.
+        Revisamos en qué punto estás, qué está fallando y qué necesitas realmente para que tu negocio funcione online.
       </p>
     </div>
 
@@ -3008,5 +3133,29 @@ footer {
   </div>
 </footer>
 
+</script>
+<script>
+const revealElements = document.querySelectorAll(
+  '.section, .quick-card, .service-card, .enfoque-item, .concept-card, .project-card, .about-content > p, .about-signature, .about-tags, .cta-content, .cta-actions'
+);
+
+if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -8% 0px'
+  });
+
+  revealElements.forEach(el => observer.observe(el));
+} else {
+  revealElements.forEach(el => el.classList.add('is-visible'));
+}
+</script>
 </body>
 </html>
