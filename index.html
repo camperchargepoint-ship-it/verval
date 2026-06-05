@@ -1770,7 +1770,9 @@ img { max-width: 100%; display: block; }
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  background: var(--paper);
+  background: #111111;
+  color: var(--cream);
+  border-radius: 46px 46px 0 0;
 }
 
 .cta::before {
@@ -1778,8 +1780,8 @@ img { max-width: 100%; display: block; }
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 18% 22%, rgba(111,125,69,.12), transparent 28%),
-    radial-gradient(circle at 82% 74%, rgba(223,231,201,.34), transparent 30%);
+    radial-gradient(circle at 18% 22%, rgba(223,231,201,.10), transparent 30%),
+    radial-gradient(circle at 82% 74%, rgba(111,125,69,.18), transparent 32%);
   pointer-events: none;
   z-index: -2;
 }
@@ -1791,7 +1793,7 @@ img { max-width: 100%; display: block; }
   padding: 0;
   border-radius: 0;
   background: transparent;
-  color: var(--ink);
+  color: var(--cream);
   display: grid;
   grid-template-columns: 1.08fr .92fr;
   gap: 48px;
@@ -1808,18 +1810,22 @@ img { max-width: 100%; display: block; }
   content: none;
 }
 
+.cta .kicker {
+  color: var(--olive-soft);
+}
+
 .cta h2 {
   max-width: 850px;
   font-size: clamp(3rem, 6vw, 6.9rem);
   line-height: .84;
   letter-spacing: -.082em;
-  color: var(--ink);
+  color: var(--cream);
 }
 
 .cta p {
   max-width: 620px;
   margin-top: 28px;
-  color: var(--muted);
+  color: rgba(255,250,242,.68);
   font-size: 1.08rem;
 }
 
@@ -1831,12 +1837,12 @@ img { max-width: 100%; display: block; }
   padding: 26px;
   border-radius: 28px;
   background:
-    radial-gradient(circle at 88% 14%, rgba(111,125,69,.30), transparent 34%),
-    #111111;
-  border: 1px solid rgba(255,255,255,.10);
+    radial-gradient(circle at 88% 14%, rgba(223,231,201,.13), transparent 34%),
+    rgba(255,250,242,.055);
+  border: 1px solid rgba(255,250,242,.12);
   box-shadow:
-    0 30px 82px rgba(17,17,17,.16),
-    inset 0 1px 0 rgba(255,255,255,.08);
+    0 30px 82px rgba(0,0,0,.18),
+    inset 0 1px 0 rgba(255,255,255,.075);
   display: grid;
   gap: 12px;
   backdrop-filter: blur(16px);
@@ -3075,6 +3081,84 @@ footer {
   </div>
 </section>
 
+<section class="section about" id="quien-soy">
+  <div class="container about-grid">
+    <div class="about-content">
+      <p class="kicker">Quién soy</p>
+      <h2 class="section-title">
+  Estrategia y<br>
+  arquitectura<br>
+  digital.
+</h2>
+      <p>
+        Trabajo proyectos digitales desde una visión global: <strong>estructura, contenido, diseño, posicionamiento y experiencia de usuario</strong>. Antes de diseñar nada, ordeno qué necesita comunicar el negocio y cómo debe entenderlo quien llega.
+      </p>
+      <p>
+        No se trata solo de una web. Se trata de construir una base clara, coherente y preparada para funcionar dentro del negocio.
+      </p>
+      <p>
+        Me enfoco en crear sistemas digitales con intención: bien planteados, fáciles de entender y pensados para convertir. Cada decisión tiene un porqué: guiar, explicar, generar confianza o facilitar una acción.
+      </p>
+      <p>
+        Mi trabajo se mueve entre la estrategia, la arquitectura de contenido, el diseño y el desarrollo. Esa combinación es la que me permite ver cada proyecto como un conjunto que tiene que funcionar, no como piezas sueltas.
+      </p>
+
+      <div class="about-work">
+        <h3>Cómo trabajo</h3>
+
+        <div class="work-list">
+          <article class="work-item">
+            <span>01</span>
+            <div>
+              <h4>Entender antes de construir</h4>
+              <p>Analizo el negocio, el contexto y lo que realmente necesita comunicar para que la web tenga sentido.</p>
+            </div>
+          </article>
+
+          <article class="work-item">
+            <span>02</span>
+            <div>
+              <h4>Convertir el caos en estructura</h4>
+              <p>Ordeno servicios, mensajes, contenidos y prioridades para que todo sea fácil de entender.</p>
+            </div>
+          </article>
+
+          <article class="work-item">
+            <span>03</span>
+            <div>
+              <h4>Diseñar con intención</h4>
+              <p>Cada decisión visual tiene un objetivo: explicar, guiar, generar confianza o facilitar una acción.</p>
+            </div>
+          </article>
+
+          <article class="work-item">
+            <span>04</span>
+            <div>
+              <h4>Preparar el crecimiento</h4>
+              <p>La base se construye pensando en SEO, evolución, escalabilidad y mejora continua.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="about-signature">
+        <strong>Verónica Valero</strong>
+        <span>Estrategia digital · Diseño web · SEO · automatización</span>
+      </div>
+
+      <div class="about-tags">
+        <span>Estrategia</span>
+        <span>Estructura</span>
+        <span>Crecimiento</span>
+      </div>
+    </div>
+
+    <div class="about-visual">
+      <img src="imagen_veronica.png" alt="Verónica Valero">
+    </div>
+  </div>
+</section>
+
 <section class="section creative" id="proyectos">
   <div class="container">
     <div class="section-head">
@@ -3195,83 +3279,6 @@ footer {
           <span class="portfolio-link">Ver proyecto →</span>
         </div>
       </a>
-    </div>
-  </div>
-</section>
-<section class="section about" id="quien-soy">
-  <div class="container about-grid">
-    <div class="about-content">
-      <p class="kicker">Quién soy</p>
-      <h2 class="section-title">
-  Estrategia y<br>
-  arquitectura<br>
-  digital.
-</h2>
-      <p>
-        Trabajo proyectos digitales desde una visión global: <strong>estructura, contenido, diseño, posicionamiento y experiencia de usuario</strong>. Antes de diseñar nada, ordeno qué necesita comunicar el negocio y cómo debe entenderlo quien llega.
-      </p>
-      <p>
-        No se trata solo de una web. Se trata de construir una base clara, coherente y preparada para funcionar dentro del negocio.
-      </p>
-      <p>
-        Me enfoco en crear sistemas digitales con intención: bien planteados, fáciles de entender y pensados para convertir. Cada decisión tiene un porqué: guiar, explicar, generar confianza o facilitar una acción.
-      </p>
-      <p>
-        Mi trabajo se mueve entre la estrategia, la arquitectura de contenido, el diseño y el desarrollo. Esa combinación es la que me permite ver cada proyecto como un conjunto que tiene que funcionar, no como piezas sueltas.
-      </p>
-
-      <div class="about-signature">
-        <strong>Verónica Valero</strong>
-        <span>Estrategia digital · Diseño web · SEO · automatización</span>
-      </div>
-
-      <div class="about-tags">
-        <span>Estrategia</span>
-        <span>Estructura</span>
-        <span>Crecimiento</span>
-      </div>
-
-      <div class="about-work">
-        <h3>Cómo trabajo</h3>
-
-        <div class="work-list">
-          <article class="work-item">
-            <span>01</span>
-            <div>
-              <h4>Entender antes de construir</h4>
-              <p>Analizo el negocio, el contexto y lo que realmente necesita comunicar para que la web tenga sentido.</p>
-            </div>
-          </article>
-
-          <article class="work-item">
-            <span>02</span>
-            <div>
-              <h4>Convertir el caos en estructura</h4>
-              <p>Ordeno servicios, mensajes, contenidos y prioridades para que todo sea fácil de entender.</p>
-            </div>
-          </article>
-
-          <article class="work-item">
-            <span>03</span>
-            <div>
-              <h4>Diseñar con intención</h4>
-              <p>Cada decisión visual tiene un objetivo: explicar, guiar, generar confianza o facilitar una acción.</p>
-            </div>
-          </article>
-
-          <article class="work-item">
-            <span>04</span>
-            <div>
-              <h4>Preparar el crecimiento</h4>
-              <p>La base se construye pensando en SEO, evolución, escalabilidad y mejora continua.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </div>
-
-    <div class="about-visual">
-      <img src="imagen_veronica.png" alt="Verónica Valero">
     </div>
   </div>
 </section>
