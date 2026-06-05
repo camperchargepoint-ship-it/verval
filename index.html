@@ -2051,34 +2051,38 @@ footer {
 
 @media (min-width: 981px) {
   .about-visual {
-    margin-top: -56px;
+    margin-top: -138px;
   }
 
   .about-visual::before {
-    top: 48%;
+    top: 42%;
   }
 
   .work-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 42px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: 24px;
   }
 
   .work-item {
-    grid-template-columns: 48px 1fr;
-    gap: 14px;
-    padding: 18px 0;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 16px 0 0;
   }
 
-  .work-item:nth-child(2) {
-    border-bottom: 1px solid rgba(255,250,242,.10);
+  .work-item:nth-child(n) {
+    border-top: 1px solid rgba(255,250,242,.10);
+    border-bottom: 0;
   }
 
-  .work-item:nth-child(3) {
-    border-top: 0;
+  .work-item h4 {
+    font-size: 1.02rem;
+    line-height: 1.08;
   }
 
   .work-item p {
-    max-width: 360px;
+    max-width: 100%;
+    font-size: .88rem;
+    line-height: 1.36;
   }
 }
 
