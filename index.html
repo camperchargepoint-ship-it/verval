@@ -1616,8 +1616,9 @@ img { max-width: 100%; display: block; }
   position: relative;
   min-height: 620px;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   justify-content: center;
+  overflow: hidden;
 }
 
 .about-visual::before {
@@ -1655,11 +1656,11 @@ img { max-width: 100%; display: block; }
   position: relative;
   z-index: 2;
   width: auto;
-  height: clamp(690px, 54vw, 735px);
+  height: clamp(760px, 60vw, 840px);
   max-width: min(100%, 520px);
   max-height: none;
   object-fit: contain;
-  object-position: center bottom;
+  object-position: center top;
   border: 0;
   border-radius: 0;
   box-shadow: none;
@@ -2687,9 +2688,9 @@ footer {
     grid-row: 1 / span 2;
     min-height: 220px;
     order: initial;
-    align-items: flex-end;
+    align-items: flex-start;
     justify-content: center;
-    overflow: visible;
+    overflow: hidden;
     border-radius: 0;
   }
 
@@ -2715,11 +2716,11 @@ footer {
 
   .about-visual img {
     width: auto;
-    height: clamp(245px, 64vw, 295px);
+    height: clamp(310px, 82vw, 360px);
     max-width: 100%;
     max-height: none;
     object-fit: contain;
-    object-position: center bottom;
+    object-position: center top;
   }
 
   .section { padding: 82px 0; }
