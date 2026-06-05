@@ -1616,7 +1616,7 @@ img { max-width: 100%; display: block; }
   position: relative;
   min-height: 620px;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
 }
 
@@ -1625,9 +1625,10 @@ img { max-width: 100%; display: block; }
   position: absolute;
   width: min(88%, 520px);
   height: 520px;
-  bottom: 10px;
+  top: 50%;
+  bottom: auto;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   border-radius: 999px;
   background:
     radial-gradient(circle at 50% 36%, rgba(255,250,242,.22), transparent 34%),
@@ -1653,8 +1654,18 @@ img { max-width: 100%; display: block; }
 .about-visual img {
   position: relative;
   z-index: 2;
-  max-height: 640px;
-  width: auto;
+  width: clamp(320px, 30vw, 380px);
+  height: clamp(320px, 30vw, 380px);
+  max-height: none;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 50%;
+  border: 1px solid rgba(245,239,229,.42);
+  box-shadow:
+    0 32px 76px rgba(0,0,0,.36),
+    0 0 0 10px rgba(255,250,242,.035),
+    inset 0 1px 0 rgba(255,255,255,.12);
   filter:
     drop-shadow(0 34px 48px rgba(0,0,0,.42))
     drop-shadow(0 0 42px rgba(223,231,201,.10));
@@ -2679,8 +2690,8 @@ footer {
     grid-row: 1 / span 2;
     min-height: 220px;
     order: initial;
-    align-items: flex-start;
-    justify-content: flex-end;
+    align-items: center;
+    justify-content: center;
     overflow: visible;
     border-radius: 22px;
   }
@@ -2692,7 +2703,9 @@ footer {
   .about-visual::before {
     width: 150%;
     height: 300px;
-    bottom: -34px;
+    top: 50%;
+    bottom: auto;
+    transform: translate(-50%, -50%);
     opacity: .62;
     filter: blur(22px);
   }
@@ -2704,13 +2717,13 @@ footer {
   }
 
   .about-visual img {
-    width: 100%;
-    height: 220px;
+    width: clamp(220px, 58vw, 260px);
+    height: clamp(220px, 58vw, 260px);
     max-height: none;
     object-fit: cover;
     object-position: center top;
-    border-radius: 22px;
-    clip-path: inset(0 0 0 0 round 22px);
+    border-radius: 50%;
+    clip-path: none;
   }
 
   .section { padding: 82px 0; }
