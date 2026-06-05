@@ -1614,7 +1614,8 @@ img { max-width: 100%; display: block; }
 
 .about-visual {
   position: relative;
-  min-height: 620px;
+  height: 560px;
+  min-height: 560px;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -1661,6 +1662,8 @@ img { max-width: 100%; display: block; }
   max-height: none;
   object-fit: contain;
   object-position: center top;
+  transform: translateY(-34px);
+  clip-path: inset(0 0 24% 0);
   border: 0;
   border-radius: 0;
   box-shadow: none;
@@ -2686,7 +2689,8 @@ footer {
   .about-visual {
     grid-column: 2;
     grid-row: 1 / span 2;
-    min-height: 220px;
+    height: 205px;
+    min-height: 205px;
     order: initial;
     align-items: flex-start;
     justify-content: center;
@@ -2721,6 +2725,8 @@ footer {
     max-height: none;
     object-fit: contain;
     object-position: center top;
+    transform: translateY(-18px);
+    clip-path: inset(0 0 26% 0);
   }
 
   .section { padding: 82px 0; }
